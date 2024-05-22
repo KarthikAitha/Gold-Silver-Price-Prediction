@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metals Price Prediction</title>
+    <style>
+        body {
+            background-image: url('gold_silver_background.jpg');
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            color: white;
+            font-family: Arial, sans-serif;
+            }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+        }
+        .plot-container {
+            display: flex;
+            justify-content: space-around; /* Changed to space-around to space the plots evenly */
+        }
+        .plot {
+            width: 45%; /* Set the width of each plot to 45% to fit two plots side by side */
+        }
+    </style>
+</head>
+<body>
+    <h1>Metals Price Prediction</h1>
+    <div class="plot-container">
+        <div class="plot">
+            <h2>Silver Price Prediction</h2>
+            <ul>
+                {% for date, price in silver_predictions %}
+                <li>{{ date }}: {{ price }}</li>
+                {% endfor %}
+            </ul>
+            <div>
+                {{ plot_html_silver | safe }}
+            </div>
+        </div>
+        <div class="plot">
+            <h2>Gold Price Prediction</h2>
+            <ul>
+                {% for date, price in gold_predictions %}
+                <li>{{ date }}: {{ price }}</li>
+                {% endfor %}
+            </ul>
+            <div>
+                {{ plot_html_gold | safe }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
